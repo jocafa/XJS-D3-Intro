@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+
+      @import url(stack.css);
+      @import url(monokai.css);
+
+      .big {
+        font-size: 128px;
+      }
+
+      .caption {
+        font-size: 96px;
+        text-align: center;
+        text-shadow: 0px 2px 6px rgba(0,0,0,.5);
+      }
+
+    </style>
+  </head>
+  <body class="overview">
+    <section>
+      <h1 class="caption">Intro to D3</h1>
+    </section>
+    <section>
+      <h1>Data Driven Documents</h1>
+      <h2>D3 ≠ Charts</h2>
+    </section>
+    <section>
+      <h1>What can D3 do?</h1>
+      <ul>
+        <li><a href="http://bl.ocks.org/mbostock/raw/1256572/">Showreel</a></li>
+        <li><a href="https://github.com/mbostock/d3/wiki/Gallery">Examples Gallery</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h1 class="caption">API</h1>
+    </section>
+    <section>
+      <h1>Scales</h1>
+      <pre><code class="javascript">
+var scale = d3.scale.linear()
+  .domain([0, 1])
+  .range([0, 100]);
+
+scale(0.5);
+      </code></pre>
+    </section>
+    <section>
+      <h1>Selections</h1>
+      <pre><code class="javascript">
+d3.selectAll('#foo .bar')
+  .style('opacity', 0.5)
+  .style('color', 'steelblue')
+  .text(function () {
+    return '[' + this.innerText + ']';
+  });
+      </code></pre>
+    </section>
+    <section>
+      <h1>Joins</h1>
+      <pre><code class="javascript">
+var listItems = d3.selectAll('#staff li')
+  .data([ 'Philip J. Fry', 'Prof. Hubert J. Farnsworth', &hellip;]);
+
+listItems.enter()
+  .append('li');
+
+listItems
+  .text(function (d) { return d; });
+
+listItems.exit()
+  .remove();
+      </code></pre>
+    </section>
+    <section>
+      <h1>Transitions</h1>
+      <pre><code class="javascript">
+listItems.enter()
+  .append('li')
+  .style('opacity', 0);
+
+listItems
+  .text(function (d) { return d; })
+  .transition()
+  .style('opacity', 1);
+
+listItems.exit().transition()
+  .style('opacity', 0);
+  .remove();
+      </code></pre>
+    </section>
+
+    <section>
+      <h1>Layout: Pie</h1>
+      <pre><code class="javascript">
+var pieLayout = d3.layout.pie();
+
+pie([1, 2, 3, 4, 5]);
+
+[
+  {
+    data: 1,
+    startAngle: 6.283185307179586,
+    endAngle: 5.8643062867009474,
+    value: 1
+  },
+  &hellip;
+]
+      </code></pre>
+    </section>
+    <script src="d3.v3.js"></script>
+    <script src="stack.v0.js"></script>
+    <script src="highlight.pack.js"></script>
+    <script>
+      d3.selectAll('code').each(function () { hljs.highlightBlock(this); });
+    </script>
+  </body>
+</html>
