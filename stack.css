@@ -53,3 +53,17 @@ screen and (max-device-width: 1024px) {
     display: block;
   }
 }
+
+
+
+
+video {
+  display: block;
+  margin: 0 auto;
+}
+
+.stack iframe {
+  width: 100%;
+  height: 80%;
+  border: none;
+}
